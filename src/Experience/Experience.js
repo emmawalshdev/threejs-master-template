@@ -39,13 +39,18 @@ export default class Experience {
             this.update(); // call the update function below
         });
     }
+
     resize(){
         console.log('A resize occured');
-        this.camera.resize();
+        // propogate resuze to children
+        this.camera.resize(); // call rezize camera method
+        this.renderer.resize(); // call resize renderer method
     }
 
+    // make sure update is run after resize
     update(){
         // console.log('update the experience');
         this.camera.update()
+        this.renderer.update()
     }
 }

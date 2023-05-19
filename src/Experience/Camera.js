@@ -33,6 +33,7 @@ export default class Camera {
         this.controls.enableDamping = true;
     }
     resize(){
+        console.log('camera resize')
         this.instance.aspect = this.sizes.width / this.sizes.height;
         this.instance.updateProjectionMatrix();
     }

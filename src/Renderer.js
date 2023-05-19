@@ -28,4 +28,14 @@ export default class Renderer {
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }
+
+    resize(){
+        this.instance.setSize(this.sizes.width, this.sizes.height)
+        this.instance.setPixelRatio(this.sizes.pixelRatio)
+    }
+
+    update(){
+        // do the render by using scene and camera
+        this.instance.render(this.scene, this.camera.instance) // use camera. instance, not your camera!
+    }
 }
