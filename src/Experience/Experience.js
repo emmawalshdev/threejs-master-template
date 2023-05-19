@@ -3,6 +3,7 @@ import Sizes from '/Utils/Sizes.js'
 import Time from '../Utils/Time';
 import Camera from './Camera';
 import Renderer from '../Renderer';
+import World from './World/World';
 
 let instance = null // singleton
 
@@ -28,6 +29,7 @@ export default class Experience {
         this.scene = new THREE.Scene();
         this.camera = new Camera(); // can pass this in this as a parameter for use in camera.js
         this.renderer = new Renderer(); 
+        this.world = new World();
 
         // sizes resize event
         this.sizes.on('resize', () => {
@@ -41,7 +43,6 @@ export default class Experience {
     }
 
     resize(){
-        console.log('A resize occured');
         // propogate resuze to children
         this.camera.resize(); // call rezize camera method
         this.renderer.resize(); // call resize renderer method
