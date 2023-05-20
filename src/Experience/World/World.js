@@ -1,6 +1,7 @@
 import Experience from "../Experience";
 import * as THREE from 'three'
 import Environment from "./Environment";
+import Floor from "./Floor";
 
 export default class World {
     constructor(){
@@ -16,8 +17,9 @@ export default class World {
 
         // make srue resources are ready before instantiating environment
         this.resources.on('ready', () => {
-            console.log('resources ready');
-            // setup
+
+            // setup - order important, environment update func dependant on floor being loaded firsts
+            this.floor = new Floor();
             this.environment = new Environment()
         });
     }
