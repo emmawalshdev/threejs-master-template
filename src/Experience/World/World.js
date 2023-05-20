@@ -8,18 +8,17 @@ export default class World {
         this.scene = this.experience.scene;
         this.resources = this.experience.resources; // instantiate resources for use of textures
 
-        console.log(this.resources);
         const cube = new THREE.Mesh(
             new THREE.BoxGeometry( 1, 1, 1 ),
-            new THREE.MeshStandardMaterial( {color: 0x00ff00} )
+            new THREE.MeshStandardMaterial( )
         )
         this.scene.add(cube)
 
+        // make srue resources are ready before instantiating environment
         this.resources.on('ready', () => {
             console.log('resources ready');
-        })
-
-        // setup
-        this.environment = new Environment()
+            // setup
+            this.environment = new Environment()
+        });
     }
 }

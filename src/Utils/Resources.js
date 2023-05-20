@@ -26,7 +26,6 @@ export default class Resources extends EventEmitter {
     
     startLoading(){ // loop through textures and load
         for(const source of this.sources){
-            console.log('source', source.type);
 
             if(source.type == 'gltfModel'){
                 this.loaders.gltfLoader.load(
@@ -43,7 +42,6 @@ export default class Resources extends EventEmitter {
                     }
                 )
             } else if(source.type == 'cubeTexture'){
-                console.log('hello')
                 this.loaders.cubeTextureLoader.load(
                     source.path, (file) => {
                     this.sourceLoaded(source, file); // call below method
@@ -54,8 +52,8 @@ export default class Resources extends EventEmitter {
     }
 
     sourceLoaded(source, file){ // called everythime something is loaded
-        console.log(this.items)
-        this.items[source.name] = file; // name specified in sources.js
+        this.items[source.name] = file // name specified in sources.js
+        console.log(this.items[source.name]);
         this.loaded++
 
         // console.log('items: ', this.items)
@@ -63,9 +61,7 @@ export default class Resources extends EventEmitter {
 
         // if finished run the func
         if(this.loaded === this.toLoad){
-            console.log('finished');
             this.trigger('ready');
-            console.log('loaded', this.loaded); // increment loaded
         }
     }
 }
