@@ -3,7 +3,7 @@ import FlyingRobot from './FlyingRobot.js'
 import Experience from  '/Experience/Experience.js'
 const ExperienceTest = new Experience(document.querySelector('canvas.webgl'));
 
-const wallE = new Robot('Walle', 0);
+// const wallE = new Robot('Walle', 0);
 
 // console.log(FlyingRobot);
 

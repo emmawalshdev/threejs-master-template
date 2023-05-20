@@ -23,7 +23,6 @@ export default class Experience {
 
         // options
         this.canvas = canvas;
-        console.log(this.canvas);
 
         // setup - instantiate classes imported
         this.sizes = new Sizes();
