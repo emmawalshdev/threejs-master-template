@@ -13,12 +13,11 @@ let instance = null // singleton
 export default class Experience {
     constructor(canvas){
 
+        // use the original experienc if this exists
         if(instance){
-            console.log('b');
             return instance
         }
         instance = this;
-        console.log('a');
 
         window.experience = this; // access it via console, global variable
 

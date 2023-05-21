@@ -1,7 +1,7 @@
-import Robot from '/Robot.js'
-import FlyingRobot from './FlyingRobot.js'
 import Experience from  '/Experience/Experience.js'
-const ExperienceTest = new Experience(document.querySelector('canvas.webgl'));
+const ExperienceCanvas = new Experience(document.querySelector('canvas.webgl'));
+// the following script has been restructured into classes and improted as modules
+
 
 // const wallE = new Robot('Walle', 0);
 

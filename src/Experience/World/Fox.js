@@ -9,12 +9,10 @@ export default class Floor {
         this.resources = this.experience.resources;
         this.time = this.experience.time;
         this.debug = this.experience.debug;
-        console.log(this.debug);
 
         // debug
         if(this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('fox');
-            console.log(this.debugFolder);
         }
 
         // setup
