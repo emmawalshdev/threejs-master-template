@@ -5,7 +5,14 @@ export default class Environment {
     constructor(){
         this.experience = new Experience();
         this.scene = this.experience.scene;
-        this.resources = this.experience.resources // get access to resources
+        this.resources = this.experience.resources; // get access to resources
+        this.debug = this.experience.debug;
+
+        // debug
+        if(this.debug.active){
+            this.debugFolder = this.debug.ui.addFolder('Environment');
+        }
+
         // light
         this.setSunLight();
         this.setEnvironmentMap();
@@ -19,6 +26,35 @@ export default class Environment {
         this.sunlight.shadow.normalBias = 0.05
         this.sunlight.position.set(3.5, 2, - 1.25)
         this.scene.add(this.sunlight);
+
+        // sunlight debug
+        if(this.debug.active){
+            this.debugFolder
+                .add(this.sunlight, 'intensity')
+                .name('sunLightIntensity')
+                .min(0)
+                .max(10)
+                .step(0.001)
+
+            this.debugFolder
+                .add(this.sunlight.position, 'x')
+                .name('SunlightPositionX')
+                .min(0)
+                .max(10)
+                .step(0.001)
+            this.debugFolder
+                .add(this.sunlight.position, 'y')
+                .name('SunlightPositionY')
+                .min(0)
+                .max(10)
+                .step(0.001)
+            this.debugFolder
+                .add(this.sunlight.position, 'z')
+                .name('SunlightPositionZ')
+                .min(0)
+                .max(10)
+                .step(0.001)
+        }
     }
     setEnvironmentMap(){
         this.environmentMap = {}
@@ -41,6 +77,18 @@ export default class Environment {
         }
 
         this.environmentMap.updateMaterials()
+
+        // debug
+        if(this.debug.active){
+            this.debugFolder
+              .add(this.environmentMap, 'intensity')
+              .name('envMapIntensity')
+              .min(0)
+              .max(4)
+              .step(0.001)
+              .onChange(this.environmentMap.updateMaterials)
+        }
+
     }
 
 }
