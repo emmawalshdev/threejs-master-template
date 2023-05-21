@@ -1,5 +1,5 @@
 import Experience from  '/Experience/Experience.js'
-const ExperienceCanvas = new Experience(document.querySelector('canvas.webgl'));
+const experience = new Experience(document.querySelector('canvas.webgl'));
 // the following script has been restructured into classes and improted as modules
 
 
