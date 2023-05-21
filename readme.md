@@ -23,7 +23,7 @@ The template includes the following features
 - Utils folder structure, the sub files can be resued
 - Loaders for textures, GLTF models & cube textures
 - A debugger with example tweaks, only available when #debug is added to the href
-- A destroy method, which is needed on occasion. I.e., at the end of a level to clear a scene, camera, renderer and controls.
+- A destroy method, which is needed on occasion. I.e., at the end of a level to clear a scene, camera, renderer and controls
 
 ## Setup
 1. Clone the repository
