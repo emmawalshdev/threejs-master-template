@@ -53,7 +53,6 @@ export default class Resources extends EventEmitter {
 
     sourceLoaded(source, file){ // called everythime something is loaded
         this.items[source.name] = file // name specified in sources.js
-        console.log(this.items[source.name]);
         this.loaded++
 
         // console.log('items: ', this.items)
