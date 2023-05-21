@@ -59,4 +59,34 @@ export default class Experience {
         this.world.update();
         this.renderer.update();
     }
+
+    // need to check all objects with a dispose() method - for larger projects seperate destroy methods for classes
+    destroy(){
+        this.sizes.off('resize');
+        this.time.off('tick');
+
+        // traverse scene to destroy all meshes
+        this.scene.traverse((child)=>{
+            if(child instanceof THREE.Mesh){
+                child.geometry.dispose();
+
+                for(const key in child.material){
+                    const value = child.material[key];
+
+                    // check if a value is present & if it's destorable
+                    if(value && typeof value.dispose === 'function'){
+                        // distroy
+                        value.dispose();
+                    }
+                }
+            }
+        });
+        this.camera.controls.dispose();
+        this.renderer.instance.dispose();
+
+        if(this.debug.active){
+            this.debug.ui.destroy();
+        }
+        // optional - remove resize, time functions which are actively listening to events
+    }
 }
