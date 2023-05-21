@@ -7,8 +7,10 @@ export default class Floor {
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
         this.resource = this.resources.items.foxModel; // get gltf model
+        this.time = this.experience.time;
 
         this.setModel();
+        this.setAnimation();
     }
     setModel(){
         this.model = this.resource.scene;
@@ -16,10 +18,19 @@ export default class Floor {
         this.scene.add(this.model);
 
         this.model.traverse((child) => {
-            console.log(child);
             if(child instanceof THREE.Mesh){
                 child.castShadow = true;
             }
         });
+    }
+    setAnimation(){
+        this.animation = {} // empty obj for animation
+        this.animation.mixer = new THREE.AnimationMixer(this.model);
+        this.animation.action = this.animation.mixer.clipAction(this.resource.animations[0]); // use first animation
+        this.animation.action.play(); // play animation, needs to be updated on each frame
+    }
+    update(){
+        // console.log('update the fox');
+        this.animation.mixer.update(this.time.delta * 0.001);
     }
 }

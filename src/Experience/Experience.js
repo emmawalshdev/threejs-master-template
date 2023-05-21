@@ -53,7 +53,8 @@ export default class Experience {
     // make sure update is run after resize
     update(){
         // console.log('update the experience');
-        this.camera.update()
-        this.renderer.update()
+        this.camera.update();
+        this.world.update();
+        this.renderer.update();
     }
 }
