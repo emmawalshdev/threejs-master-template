@@ -6,8 +6,18 @@ export default class Floor {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
-        this.resource = this.resources.items.foxModel; // get gltf model
         this.time = this.experience.time;
+        this.debug = this.experience.debug;
+        console.log(this.debug);
+
+        // debug
+        if(this.debug.active){
+            this.debugFolder = this.debug.ui.addFolder('fox');
+            console.log(this.debugFolder);
+        }
+
+        // setup
+        this.resource = this.resources.items.foxModel; // get gltf model
 
         this.setModel();
         this.setAnimation();
